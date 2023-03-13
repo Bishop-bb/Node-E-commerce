@@ -1,0 +1,57 @@
+#main{
+    display: flex;
+    text-align: center;
+    background-color: black;
+    width: 95%;
+
+    flex-wrap: wrap
+}
+#con{
+    width: 20%;
+    padding: 20px;
+   
+}
+#con img{
+    height: 130px;
+    width: 70%
+    
+}
+
+.padding{
+    padding-right: 5px;
+}
+
+#con-1 a{
+    color: red  ;
+    text-decoration: none;
+ 
+}
+#con-1 ul{
+    list-style-type: none;
+}
+
+#con-1 ul li{
+    padding-bottom: 7px;
+}
+.cart{
+    color: orange
+}
+#con-2{
+    display: flex;
+    flex-direction: wrap;
+    justify-content: space-evenly;
+    /* width: 90%; */
+}
+
+#con2{
+    background-color: whitesmoke;
+    margin-top: 30px;
+}
+
+#con-2 > div{
+    width: 15%;
+}
+#con-2 img{
+    height: 200px;
+    width: 100%
+}

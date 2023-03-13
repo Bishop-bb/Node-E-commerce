@@ -1,0 +1,47 @@
+
+<%- include ('../includes/admin/header.ejs') %>
+<title>Bishop:< %= title %> </title>
+</head>
+<body>
+    <%- include ('../includes/admin/nav.ejs') %>
+    
+
+    <div class="container mt-3">
+        
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                  <th scope="col">S/N</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Image</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+              <% if(products.length > 0) {
+                let sn=1
+                for(let product of products){
+                    %>
+                <tr>
+                  <th scope="row"><%= sn++ %></th>
+                  <td><%= product.title %></td>
+                  <td><%= product.price %></td>
+                  <td><img src="<%= product.image %>" alt="<%= product.title %>"  style="height:150px"></td>
+                 <td>
+                    <a href="/updateProduct/<%= product.id %>" class="btn btn-warning">Update</a>
+                    <form action="/deleteProduct" method="post" style="display:inline-block">
+                      <input type="hidden" name="id" value="<%= product.id %>" >
+                      <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                 </td>
+                </tr>
+          <%  }
+        }  
+        %>
+              </tbody>
+          </table>
+        </div>
+    
+
+<%- include ('../includes/admin/footer.ejs') %>

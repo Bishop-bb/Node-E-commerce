@@ -1,0 +1,42 @@
+<%- include ('../includes/admin/header.ejs') %>
+<title>Bishop: <%= title %> </title>
+</head>
+<body>
+    <%- include ('../includes/admin/nav.ejs') %>
+
+<div class="container" >
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mt-4">
+                <h2> Update Contestants</h2>
+                   <div class="card-body">
+                    <form action="/updateUser" method="post">
+                      <input type="hidden" name="id" value="<%= user.id %>" >
+                      <div class="mb-3">
+                        <label for="title" class="form-label">Name</label>
+                        <input type="text" class="form-control" value="<%= user.name %>"   name="name" placeholder="Name">
+                      </div>
+                      
+                      <div class="mb-3">
+                        <label for="image" class="form-label">Email</label>
+                        <input type="email" class="form-control" value="<%= user.email %>"   name="email" placeholder="Image">
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="price" class="form-label">Password</label>
+                        <input type="password" class="form-control" value="<%= user.password %>"   name="password" placeholder="Party">
+                      </div> 
+
+
+
+                   <input type="submit" class="btn btn-primary" value="Update">
+                </form>
+                  </div>
+        </div>
+        </div>
+    </div>
+</div> 
+
+
+
+
+<%- include ('../includes/admin/footer.ejs') %>

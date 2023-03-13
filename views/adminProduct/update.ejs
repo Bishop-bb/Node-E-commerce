@@ -1,0 +1,46 @@
+<%- include ('../includes/admin/header.ejs') %>
+
+<title>Bishop :<%= title %> </title>
+</head>
+
+
+
+<div class="row">
+    <div class="col-md-6 offset-md-3 mt-4">
+            <h2> Update Product</h2>
+               <div class="card-body">
+                <form action="/updateProduct" method="post">
+                  <input type="hidden" name="id" value="<%= products.id %>" >
+              <div class="mb-3">
+              
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control"  name="title" value="<%= products.title %>">
+              </div>
+              <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="text" class="form-control"  name="price" value="<%= products.price %>">
+              </div> 
+              <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input type="text" class="form-control"  name="image" value="<%= products.image %>" >
+              </div>
+              <div class="mb-3">
+                <label for="image" class="form-label">Description</label>
+              <textarea name="description" class="form-control" id="" cols="30" rows="3"><%= products.description %></textarea>
+            </div>
+               <input type="submit" class="btn btn-primary" value="Update Product">
+            </form>
+              </div>
+    </div>
+    </div>
+</div>
+</div> 
+
+
+
+
+
+
+
+
+ <%- include ('../includes/admin/footer.ejs') %>

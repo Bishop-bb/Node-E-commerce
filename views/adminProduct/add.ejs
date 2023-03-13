@@ -1,0 +1,39 @@
+<%- include ('../includes/admin/header.ejs') %>
+
+<title>Bishop: <%= title %> </title>
+</head>
+
+<body>
+<%- include ('../includes/admin/nav.ejs') %>
+
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 mt-4">
+                    <h2> Add Product</h2>
+                       <div class="card-body">
+                        <form action="/addProduct" method="post">
+                      <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control"  name="title" placeholder="Title">
+                      </div>
+                      <div class="mb-3">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="text" class="form-control"  name="price" placeholder="Price">
+                      </div> 
+                      <div class="mb-3">
+                        <label for="image" class="form-label">Image</label>
+                        <input type="text" class="form-control"  name="image" placeholder="Image">
+                      </div>
+                      <div class="mb-3">
+                        <label for="image" class="form-label">Description</label>
+                      <textarea name="description" class="form-control" id="" cols="30" rows="3"></textarea>
+                    </div>
+                       <input type="submit" class="btn btn-primary" value="Submit">
+                    </form>
+                      </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include ('../includes/admin/footer.ejs') %>

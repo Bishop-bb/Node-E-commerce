@@ -1,0 +1,48 @@
+<%- include ('../includes/admin/header.ejs') %>
+<title>Bishop :<%= title %> </title>
+</head>
+<body>
+    <%- include ('../includes/admin/nav.ejs') %>
+    <div class="container mt-3">
+    <h3 style="text-align: center;">Admin Home Page</h3>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+              <th scope="col">S/N</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Password</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% if(users.length > 0) {
+            let sn=1
+            for(let user of users){
+                %>
+            <tr>
+              <th scope="row"><%= sn++ %></th>
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+              <td><%= user.password %></td>
+
+             <td>
+                <a href="/update/<%= user.id %>" class="btn btn-warning">Update</a>
+                <form action="/deleteUser" method="post" style="display:inline-block">
+                  <input type="hidden" name="id" value="<%= user.id %>" >
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+             </td>
+            </tr>
+      <%  }
+    }  
+    %>
+          </tbody>
+      </table>
+   
+    </div>
+
+
+    
+
+<%- include ('../includes/admin/footer.ejs') %>

@@ -1,0 +1,112 @@
+<%- include ('includes/admin/header.ejs') %>
+<link rel="stylesheet" href="/css/style.css">
+<title>Bishop: <%= title %> </title>
+</head>
+
+<!--  -->
+<body style="background-image: url('/images/hd_wallpaper_9497.jpg'); background-position: contain;">
+    <%- include ('includes/user/nav.ejs') %>
+    <div class="col-md-3 col-sm-6 col-12 p-3">
+      <div class="info-box">
+        <span class="info-box-icon bg-success"><i class="fa-solid fa-house-user padding"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Welcome</span>
+          <span class="info-box-number"><%=name%></span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+
+    <div class="p-3" style="display: flex; justify-content: space-around; ">
+
+
+    <div id="con-1" style="width: 20% ; display: flex; align-self: center;background-color: wheat; margin-left: 80px; height: 300px">
+       <ul style='align-self: center; text-align: center;' >
+        <li><a href=""><i class="fa-solid fa-mobile-screen padding "></i>Phones and Tablets</a></li>
+        <li><a href=""><i class="fa-solid fa-car padding"></i>Automobile</a></li>
+        <li><a href=""><i class="fa-solid fa-gamepad padding"></i>Gaming</a></li>
+        <li><a href=""><i class="fa-solid fa-dumbbell padding"></i>Gym Accessories</a></li>
+        <li><a href=""><i class="fa-solid fa-shirt padding"></i>Fashion</a></li>
+        <li><a href=""><i class="fa-solid fa-house padding"></i>Home & Office</a></li>
+       
+
+       </ul>
+    </div>
+
+
+<!-- Carousel -->
+<div style="width: 45%;" id="demo" class="carousel slide" data-bs-ride="carousel">
+
+    <!-- Indicators/dots -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    </div>
+    
+    <!-- The slideshow/carousel -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="/images/Homepage_UND.png" alt="Los Angeles" class="d-block" style="width:100%">
+      </div>
+      <div class="carousel-item">
+        <img src="/images/Slider.png" alt="Chicago" class="d-block" style="width:100%">
+      </div>
+    </div>
+    
+    <!-- Left and right controls/icons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
+
+
+    <div style="display: flex; flex-direction: column; width: 20%; align-self: center; margin-right: 80px;">
+        <img style="height: 150px; margin-bottom: 10px; " src="/images/Homepage_UND.png"" alt="">
+        <img style="height: 150px; " src="/images/Slider.png" alt="">
+    </div>
+
+</div>
+
+<div style="display: flex; justify-content: center;">
+    <div id="main">
+        <% if(products.length > 0) {
+            let sn=1
+            for(let product of products){
+                %>
+        
+            <div id="con">
+                <div>
+                    <img src="<%= product.image%>" alt="">
+                </div>
+            <strong style="color: whitesmoke"><%= product.title %></strong>
+            <div style="color: wheat">$<%= product.price %></div>
+            <a style="color: orange;" class="nav-link" href="#"><i class="fa-solid fa-cart-shopping padding"></i>Add to Cart</a>
+            </div>
+        
+        
+        <%  }
+        }  
+        %>
+        </div>
+</div>
+
+<!-- <div id="con2">
+
+ <h3 style="text-align: center; padding: 20px 0">Mobile Accessories</h3>
+
+ <div id="con-2">
+  <div><img src="https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/34/2976061/1.jpg?9466" alt=""></div>
+<div>  <img src="https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/52/747787/1.jpg?7560" alt=""></div>
+<div>  <img src="https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/24/465817/1.jpg?5506" alt=""></div>
+<div>  <img src="https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/644667/1.jpg?3987" alt=""></div>
+  <div>  <img src="https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/97/7967802/1.jpg?3625" alt=""></div> 
+ <!-- <div>  <img src="https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/75/8874621/1.jpg?2123" alt=""></div> -->
+
+</div> -->
+    <%- include ('includes/admin/footer.ejs') %>
