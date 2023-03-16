@@ -45,6 +45,11 @@ app.use(session({
 app.use(flash())
 app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use((req, res, next)=>{
+    res.locals.isLoggedIn = req.session.isLoggedIn
+    res.locals.user = req.session.user
+    next()
+})
 
 app.use(userRoute)
 app.use(adminRoute)

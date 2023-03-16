@@ -9,11 +9,25 @@
     <div class="col-md-3 col-sm-6 col-12 p-3">
       <div class="info-box">
         <span class="info-box-icon bg-success"><i class="fa-solid fa-house-user padding"></i></span>
+<% if(isLoggedIn){%>
+  <div class="info-box-content">
+    <span class="info-box-text">Welcome</span>
+    <span class="info-box-number"><%= username %></span>
+  </div>
+  
 
-        <div class="info-box-content">
-          <span class="info-box-text">Welcome</span>
-          <span class="info-box-number"><%=name%></span>
-        </div>
+  <%}else{%>
+    <div class="info-box-content">
+      <span class="info-box-text">Hello</span>
+      <span class="info-box-number"></span>
+    </div>
+  <%}%>
+   
+  
+
+
+
+        
         <!-- /.info-box-content -->
       </div>
       <!-- /.info-box -->

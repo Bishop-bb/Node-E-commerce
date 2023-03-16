@@ -1,11 +1,14 @@
 const router = require('express').Router()
 const admin = require('../controllers/admin/pages')
-router.get('/adminHome', admin.Adminhome)
-router.get('/adminUserHome', admin.AdminUserHome)
-router.get('/adminProductHome', admin.AdminProductHome)
-router.get('/update/:id', admin.Update)
-router.post('/updateUser', admin.Updateuser)
-router.post('/deleteUser', admin.Delete)
-router.post('/logout', admin.Logout)
+const isAdmin = require('../middleware/isAdmin')
+const { check} = require('express-validator');
 
+router.get('/adminHome',isAdmin, admin.Adminhome)
+router.get('/adminUserHome', isAdmin, admin.AdminUserHome)
+router.get('/adminProductHome', isAdmin, admin.AdminProductHome)
+router.get('/update/:id', isAdmin, admin.Update)
+router.post('/updateUser', isAdmin, admin.Updateuser)
+router.post('/deleteUser', isAdmin, admin.Delete)
+router.post('/logout', admin.Logout)
+router.get('/forgotPassword', admin.forgotPasssword)
 module.exports = router

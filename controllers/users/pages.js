@@ -25,46 +25,28 @@ exports.Login=(req, res)=>{
             title: 'Login'
         
         })
+
     }
+    
     else{res.redirect('/')}
     
 }
 
 exports.Home =(req, res)=>{
-  if (!req.session.user) {
-    return req.session.save(() => {
-      res.redirect("/login");
-    });
-  }
-  const name = req.session.user.name
-    if (!req.session.user) {
-        return req.session.save(() => {
-          res.redirect("/login");
-        });
-      }
-    if(req.session.isLoggedIn !== true){
-        res.redirect('/login')
-    }
-    else{
+  
+ 
+  
         Products.findAll()
         .then(results=>{
-            res.render('index', {products:results, title: 'Home-page', name:name})
+            res.render('index', 
+            {products:results,
+            title: 'Home-page'
+          })
         }).catch(err=>{
             console.log(err)
         })
         
-    }
+   
 }
 
-exports.Logout = (req, res) => {
-    
-    req.session.destroy(err => {
-      if (err) {
-        console.log(err);
-      } else {
-        res.redirect('/login');
-      }
-    });
-    console.log(req.session)
-  };
-  
+

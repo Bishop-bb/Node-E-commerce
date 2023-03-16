@@ -1,0 +1,70 @@
+<%- include ('../includes/admin/header.ejs') %>
+<title>Bishop:  </title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto text-white">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/addUser"><i class="fas fa-sign-in-alt"></i>
+                    Register</a>
+              </li>
+             
+              
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+ this the the reset password 2nd page
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mt-4">
+          
+                <h4 style="text-align: center;"> Enter New Password </h4>
+                <div style="text-align: center;"><strong></strong>  </div>  
+                   <div class="card-body">
+                    <form action="/password" method="POST" novalidate> 
+                  <div class="mb-3">
+                    <label for="password" class="form-label">New Password</label>
+                    <input type="password"  class="form-control"  name="password" placeholder="New Password">
+                    <div style="text-align: center;">
+                        <% if (errors.length > 0) {
+                            for(let error of errors){
+                                if(error.param == "password"){ %>
+                                    <strong><%= error.msg %></strong>
+                         
+                                <% } %>
+                          <% }
+                        }%>
+                     </div>
+                   
+                  </div>
+                
+                  
+                  <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">Confirm_Password</label>
+                    <input type="password"  class="form-control"  name="confirmPassword" placeholder="Confirm_New_Password">
+                   
+                    <div style="text-align: center;">
+                        <% if (errors.length > 0) {
+                            for(let error of errors){
+                                if(error.param == "confirmPassword"){ %>
+                                    <strong><%= error.msg %></strong>
+                         
+                                <% } %>
+                          <% }
+                        }%>
+                     </div>
+                  </div>
+                   <input type="submit" class="btn btn-primary" value="Submit">
+                </form>
+                </div>
+               
+        </div>
+        </div>
+    </div>
+</div>   
+
+<%- include ('../includes/admin/footer.ejs') %>

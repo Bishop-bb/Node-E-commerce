@@ -3,23 +3,10 @@ const Products = require('../../models/product')
 const bcrypt =require('bcrypt');
 
 
-// exports.Adminhome = (req, res)=>{
-//     res.render('adminHome', {title: 'AdminHome'})
-// }
+
 
 exports.AdminUserHome= (req, res)=>{
     console.log(req.session)
-    if (!req.session.user) {
-        return req.session.save(() => {
-          res.redirect("/login");
-        });
-      }
-    let role = req.session.user.role
-    if( role !== 'admin'){
-        res.redirect('/')
-    }
-    
-    else{
         User.findAll()
     .then(result=>{
         res.render('adminUser/user', {users: result, title: 'AdminUserPage'} )
@@ -27,7 +14,7 @@ exports.AdminUserHome= (req, res)=>{
     }).catch(err=>{
         console.log(err)
     })
-    }
+    
 
    
 }
@@ -36,17 +23,17 @@ exports.AdminUserHome= (req, res)=>{
 
 exports.AdminProductHome= (req, res)=>{
 
-    if (!req.session.user) {
-        return req.session.save(() => {
-          res.redirect("/login");
-        });
-      }
-    let role = req.session.user.role
-    console.log(role)
+    // if (!req.session.user) {
+    //     return req.session.save(() => {
+    //       res.redirect("/login");
+    //     });
+    //   }
+    // let role = req.session.user.role
+    // console.log(role)
  
-    if(role !== 'admin'){
-     res.redirect('/')
-    }
+    // if(role !== 'admin'){
+    //  res.redirect('/')
+    // }
 
         Products.findAll()
     .then(results=>{
@@ -58,24 +45,12 @@ exports.AdminProductHome= (req, res)=>{
 }
 
 exports.Adminhome=(req, res)=>{
-//    console.log(req.session)
-
-if (!req.session.user) {
-    return req.session.save(() => {
-      res.redirect("/login");
-    });
-  }
-   let role = req.session.user.role
-   console.log(role)
-
-   if(role == "user"){
-    res.redirect('/')
-   }
+  
     
   
    Promise.all([User.findAll(), Products.findAll({ limit: 5 })])
    .then(([user, product]) => {
-     res.render('adminHome', { user: user, product: product, title: 'Admin-Home' });
+     res.render('adminHome', { user: user, product: product, title: 'Admin-Home', name: req.session.user.name });
    })
    .catch((error) => {
      console.error(error);
@@ -91,19 +66,19 @@ if (!req.session.user) {
 
 
 exports.Update = (req, res)=>{
-    if (!req.session.user) {
-        return req.session.save(() => {
-          res.redirect("/login");
-        });
-      }
-     let role = req.session.user.role
-     const id = req.params.id
-   console.log(role)
+  //   if (!req.session.user) {
+  //       return req.session.save(() => {
+  //         res.redirect("/login");
+  //       });
+  //     }
+  //    let role = req.session.user.role
+  //    const id = req.params.id
+  //  console.log(role)
 
-   if(role !== 'admin'){
-    res.redirect('/')
-   }
-   else{
+  //  if(role !== 'admin'){
+  //   res.redirect('/')
+  //  }
+  //  else{
 
     User.findByPk(id).then(result=>{
         res.render('adminUser/update', {user:result, title: 'AdminUpdatePage'})
@@ -112,7 +87,7 @@ exports.Update = (req, res)=>{
     })
    }
     
-}
+
 
 
 exports.Updateuser  =(req, res)=>{
@@ -164,3 +139,14 @@ exports.Logout = (req, res) => {
     console.log(req.session)
   };
   
+
+  
+  exports.forgotPasssword= (req, res)=>{
+    res.render('auth/forgotPassword', {
+      title: 'Forgot-Password',
+      error: req.flash('error'),
+      userErr: req.flash('userError'),
+
+
+    })
+  }
